@@ -1,36 +1,27 @@
-class Deck {
-  constructor(decks) {
-    this.decks = decks;
-    this.amount = 4 * decks;
-    this.cards = {
-      1: this.amount,
-      2: this.amount,
-      3: this.amount,
-      4: this.amount,
-      5: this.amount,
-      6: this.amount,
-      7: this.amount,
-      8: this.amount,
-      9: this.amount,
-      10: this.amount,
-      11: this.amount,
-      12: this.amount,
-      13: this.amount,
-    };
-  }
-  deal() {
-    let card = Math.floor(Math.random() * 13 + 1);
-    this.cards[card] -= 1;
-    console.log(this.cards);
-    console.log(card);
-    if (card >= 10) {
-      return 10;
+import Deck from "./Deck";
+import CardCounter from "./CardCounter";
+
+let playerSum = 0;
+const playerDeck = [];
+let playerMoney = 200;
+let dealerSum = 0;
+const dealerDeck = [];
+let gameStatus = true;
+let cards = new Deck(6);
+let count = new CardCounter();
+
+function aceDetection(arr) {
+  let altSum = 0;
+  for (let i in arr) {
+    if (arr[i] === 1) {
+      altSum += 11;
     } else {
-      return card;
+      altSum += arr[i];
     }
   }
+  return altSum;
 }
-
-let game = new Deck(6);
-
-game.deal();
+function winStatus() {
+  if (playerSum === 21 && dealerSum !== 21) {
+  }
+}
